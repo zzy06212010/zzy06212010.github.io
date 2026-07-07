@@ -15,6 +15,11 @@
 </head>
 
 <body>
+  <!-- 暗色/亮色切换按钮 -->
+  <div class="theme-toggle">
+    <button onclick="setTheme('dark')" id="btn-dark" class="theme-btn active">🌙 暗色</button>
+    <button onclick="setTheme('light')" id="btn-light" class="theme-btn">☀️ 亮色</button>
+  </div>
   <table
     style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tbody>
@@ -26,7 +31,7 @@
               <tr style="padding:0px">
                 <td style="padding:2.5%;width:63%;vertical-align:middle">
                   <p style="text-align:center">
-                    <name>Zhiyuan Zhang (张致远6)</name>
+                    <name>Zhiyuan Zhang (Pizriy)</name>
                   </p>
                   <p>I am a XM student. (Zhiyuan Zhang)
                   </p>
@@ -162,6 +167,26 @@
       </table>
 
       <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=aMVHFEovT1gn6oVMvrp2ObQJiBrdVwX3nwGXqquyIoQ&w=300&h=200"></script>
+
+      <script>
+        function setTheme(theme) {
+          if (theme === 'light') {
+            document.body.classList.add('light-theme');
+            document.getElementById('btn-light').classList.add('active');
+            document.getElementById('btn-dark').classList.remove('active');
+            localStorage.setItem('theme', 'light');
+          } else {
+            document.body.classList.remove('light-theme');
+            document.getElementById('btn-dark').classList.add('active');
+            document.getElementById('btn-light').classList.remove('active');
+            localStorage.setItem('theme', 'dark');
+          }
+        }
+        // 加载保存的主题
+        if (localStorage.getItem('theme') === 'light') {
+          setTheme('light');
+        }
+      </script>
 
       <table
         style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
